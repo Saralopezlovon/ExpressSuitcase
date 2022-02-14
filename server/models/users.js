@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const Suitcases = require('./suitcases');
 
 const usersSchema = mongoose.Schema({
     id_user: Number,
