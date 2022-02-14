@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
+const AutoIncrement = require('mongoose-sequence')(mongoose);
 
 const objectSchema = {
-    id_suitcase: {type: Number},
     name: {type:String},
     type: {type:String},
     fridayClothes: {
@@ -23,6 +23,8 @@ const objectSchema = {
 };
 
 const suitcasesSchema = mongoose.Schema(objectSchema);
+
+suitcasesSchema.plugin(AutoIncrement, {inc_field: 'id_suitcase'});
 
 const Suitcases = mongoose.model('Suitcases', suitcasesSchema);
 
