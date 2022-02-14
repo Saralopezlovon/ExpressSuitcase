@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
+const AutoIncrement = require('mongoose-sequence'); //Plugin para incrementar ID
 
 const usersSchema = mongoose.Schema({
-    id_user: Number,
     email: String,
     password: String,
     nickname: String,
@@ -13,5 +13,6 @@ const usersSchema = mongoose.Schema({
 });
 
 const Users = mongoose.model('Users', usersSchema);
+usersSchema.plugin(AutoIncrement, {inc_field: 'id_user'});
 
 module.exports = Users;
