@@ -1,16 +1,17 @@
 const mongoose = require('mongoose');
-const Suitcases = require ('./suitcases')
+const Suitcases = require('./suitcases');
 
-const objectSchema = {
-    id_user: {type: Number},
-    email:{type:String},
-    password:{type:String},
-    nickname: {type: String},
-    address: {type: String},
-    id_suitcase: {type: mongoose.Schema.ObjectId, ref: "Suitcases"}
-};
-
-const usersSchema = mongoose.Schema(objectSchema);
+const usersSchema = mongoose.Schema({
+    id_user: Number,
+    email: String,
+    password: String,
+    nickname: String,
+    address: String,
+    id_suitcase: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Suitcases'
+    }]
+});
 
 const Users = mongoose.model('Users', usersSchema);
 
