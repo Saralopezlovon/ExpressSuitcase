@@ -19,6 +19,7 @@ const objectSchema = {
         bottom: {type: String},
         lingerie: {type: String}
     },
+    bag: [String],
     id_user: {type: mongoose.Schema.ObjectId, ref: "User"}
 };
 
