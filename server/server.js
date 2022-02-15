@@ -7,6 +7,7 @@ const helmet = require("helmet"); //Para seguridad
 /****************** Import Routes ******************/
 const userRoutes = require('./routes/users')
 const suitcaseRoutes = require('./routes/suitcases')
+const outfitsRoutes = require('./routes/outfits')
 
 /****************** Enable Express ******************/
 const app = express()
@@ -22,6 +23,7 @@ app.use(helmet());
 /****************** Routes ******************/
 app.use('/api', userRoutes);
 app.use('/api', suitcaseRoutes);
+app.use('/api', outfitsRoutes);
 
 /****************** Actice Server ******************/
 app.listen(port, () => {
