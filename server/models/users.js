@@ -1,18 +1,20 @@
 const mongoose = require('mongoose');
-const AutoIncrement = require('mongoose-sequence'); //Plugin para incrementar ID
+const AutoIncrement = require('mongoose-sequence') (mongoose); //Plugin para incrementar ID
 
-const usersSchema = mongoose.Schema({
-    email: String,
-    password: String,
-    nickname: String,
-    address: String,
+const objectSchema = {
+    email: {type:String},
+    password: {type:String},
+    nickname: {type:String},    
     id_suitcase: [{
-        type: Schema.Types.ObjectId,
+        type: mongoose.Schema.ObjectId,
         ref: 'Suitcases'
     }]
-});
+};
+
+const usersSchema = mongoose.Schema(objectSchema);
+
+usersSchema.plugin(AutoIncrement, {inc_field: 'id_user'});
 
 const Users = mongoose.model('Users', usersSchema);
-usersSchema.plugin(AutoIncrement, {inc_field: 'id_user'});
 
 module.exports = Users;
