@@ -6,14 +6,17 @@ const createSuitcase = async (req, res) =>{
     const {name, type, bag} = req.body
     const {userEmail} = req.query
 
-    const user = Users.findOne({email: userEmail})
+    const user = await Users.findOne({email: userEmail})
 
     const newSuitcase = await Suitcases.create({
         name: name,
         type: type,
         bag: bag,
         id_user: user._id   
-    }, "-__v -_id -id_user -id_suitcase");
+    });
+
+    user.id_suitcase.push(newSuitcase._id)
+    await user.save()
 
     res.status(200).json(newSuitcase)
 
@@ -25,7 +28,7 @@ const createSuitcase = async (req, res) =>{
 const findAllSuitcasesByType = async (userEmail, type) => {
         const user = Users.findOne({email: userEmail})
 
-        const suitcases = await Users.find(
+        const suitcases = await Suitcases.find(
             {
             $and: [
                 {type: type},
@@ -38,7 +41,7 @@ const findAllSuitcasesByType = async (userEmail, type) => {
 };
 
 const findSuitcaseById = async (suitcaseId) =>{
-        const suitcase = await Users.findById(suitcaseId, "-__v -_id -id_user -id_suitcase");
+        const suitcase = await Suitcases.findById(suitcaseId, "-__v -_id -id_user -id_suitcase");
         return suitcase
 };
 
@@ -55,7 +58,7 @@ const findSuitcase = async (req, res) =>{
             res.status(200).json(suitcase)
 
         } else {
-            const suitcases = await Users.find({}, "-__v -_id -id_user -id_suitcase");
+            const suitcases = await Suitcases.find({}, "-__v -_id -id_user -id_suitcase");
             res.status(200).json(suitcases)
         }
 
