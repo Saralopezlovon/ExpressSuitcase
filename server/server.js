@@ -5,7 +5,7 @@ const logger = require('morgan');
 const helmet = require("helmet"); //Para seguridad
 
 /****************** Import Routes ******************/
-//const indexRoutes = require('./routes/index')
+const userRoutes = require('./routes/users')
 
 /****************** Enable Express ******************/
 const app = express()
@@ -19,7 +19,7 @@ app.use(logger('dev')) // habilitar Morgan con preset dev
 app.use(helmet());
 
 /****************** Routes ******************/
-//app.use('/api', indexRoutes);
+app.use('/api', userRoutes);
 
 /****************** Actice Server ******************/
 app.listen(port, () => {
