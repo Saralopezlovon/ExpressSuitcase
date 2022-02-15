@@ -41,7 +41,7 @@ const findAllSuitcasesByType = async (userEmail, type) => {
 };
 
 const findSuitcaseById = async (suitcaseId) =>{
-        const suitcase = await Suitcases.findById(suitcaseId, "-__v -_id -id_user -id_suitcase");
+        const suitcase = await Suitcases.findById(suitcaseId, "-__v -_id -id_user -id_suitcase").populate('id_outfit', '-_id -__v');
         return suitcase
 };
 
