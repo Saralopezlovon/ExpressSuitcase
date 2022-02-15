@@ -7,7 +7,7 @@ const createUser = async (req, res) =>{
         email: email,
         password: password,
         nickname: nickname   
-    });
+    }, "-__v -_id -id_user");
 
     res.status(200).json(newUser)
 
@@ -16,12 +16,26 @@ const createUser = async (req, res) =>{
  }
 };
 
+const findUserByEmail = async (req, res) =>{
+    try{
+       const {email} = req.query
+       const newUser = await Users.findOne({email: email}, "-__v -_id -id_user");
+   
+       res.status(200).json(newUser)
+   
+    }catch(err){
+       res.status(400).json({'error':err})
+    }
+   };
+
 //loginUser
 //logoutUser
 
 
 const users = {
-    createUser
+    createUser,
+    findUserByEmail
+
 }
 
 module.exports = users
