@@ -7,7 +7,7 @@ const createUser = async (req, res) =>{
         email: email,
         password: password,
         nickname: nickname   
-    }, "-__v -_id -id_user");
+    });
 
     res.status(200).json(newUser)
 
@@ -19,7 +19,7 @@ const createUser = async (req, res) =>{
 const findUserByEmail = async (req, res) =>{
     try{
        const {email} = req.query
-       const newUser = await Users.findOne({email: email}, "-__v -_id -id_user");
+       const newUser = await Users.findOne({email: email}, "-__v -_id -id_user").populate('id_suitcase', 'name type bag -_id');
    
        res.status(200).json(newUser)
    

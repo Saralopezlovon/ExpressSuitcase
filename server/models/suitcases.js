@@ -4,10 +4,10 @@ const AutoIncrement = require('mongoose-sequence')(mongoose);
 const objectSchema = {
     name: {type:String},
     type: {type:String},
-    bag: [String],
-    id_user: {type: mongoose.Schema.ObjectId, ref: "User"},
+    bag: { type : Array , "default" : [] },
+    id_user: {type: mongoose.Schema.Types.ObjectId, ref: "User"},
     id_outfit: [{
-        type: Schema.Types.ObjectId,
+        type: mongoose.Schema.ObjectId,
         ref: 'Outfits'
     }]
 };
