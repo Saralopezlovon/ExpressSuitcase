@@ -69,11 +69,26 @@ const findSuitcase = async (req, res) =>{
 
 const updateSuitcase = async (req, res) =>{
     const {suitcaseId} = req.query
-    const 
+    const {name, bag} =req.body
     try{
+        const suitcase = await Suitcases.findById(suitcaseId);
 
-        
+        suitcase.name = name;
+        suitcase.bag = bag;
 
+        await suitcase.save()
+        res.status(200).json(suitcase)
+    }catch(err){
+       res.status(400).json({'error':err})
+    }
+};
+
+const deleteSuitcase = async (req, res) =>{
+    const {suitcaseId} = req.query
+    try{
+        const suitcase = await Suitcases.findById(suitcaseId);
+        await suitcase.remove()
+        res.status(200).json({msg: 'maleta eliminada'})
     }catch(err){
        res.status(400).json({'error':err})
     }
@@ -81,7 +96,9 @@ const updateSuitcase = async (req, res) =>{
 
 const suitcases = {
     createSuitcase,
-    findSuitcase
+    findSuitcase,
+    updateSuitcase,
+    deleteSuitcase
 }
 
 module.exports = suitcases
