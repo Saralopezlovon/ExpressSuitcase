@@ -67,6 +67,18 @@ const findSuitcase = async (req, res) =>{
     }
 };
 
+const updateSuitcase = async (req, res) =>{
+    const {suitcaseId} = req.query
+    const 
+    try{
+
+        
+
+    }catch(err){
+       res.status(400).json({'error':err})
+    }
+};
+
 const suitcases = {
     createSuitcase,
     findSuitcase
