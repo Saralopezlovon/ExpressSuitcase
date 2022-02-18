@@ -5,7 +5,10 @@ const routes = require('express').Router();
 routes.post('/user', users.createUser);
 
 //http://localhost:4000/api/user/login
-routes.post('/user/login', users.loginUser );
+routes.post('/user/login', users.loginUser);
+
+//http://localhost:4000/api/user/logout
+routes.post('/user/login', users.logoutUser );
 
 //http://localhost:4000/api/user?email=carolina@gmail.com
 routes.get('/user', users.findUserByEmail);

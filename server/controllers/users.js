@@ -32,7 +32,13 @@ const loginUser = async (req, res) =>{
           if(validPass){
               const payload = {check:true};
               const token = jwt.sign(payload, process.env.SECRET, {expiresIn: '30m'}); 
-              res.status(200).json({
+
+              res.cookie('access_token', token, {
+               expires: new Date(Date.now() + 18000000),
+               secure: false, // set to true if your using https
+               httpOnly: true,
+               })
+               .status(200).json({
                   mensaje: 'Valid Email and Password and correct authentication',
                   token: token,
                   email: email,
@@ -54,9 +60,16 @@ const loginUser = async (req, res) =>{
 };
 
 //Aqui añadiriamos el logout
-const logout = async (req, res) =>{
+const logoutUser = async (req, res) =>{
    try{
-   
+      if (req.cookies['access_token']) {
+         res
+         .clearCookie('access_token')
+         .status(200)
+         .json({ status: 'success', msg: 'logout success' })
+     } else {
+         res.status(401).json({ status: 'error', msg: 'something go wrong' })
+     }
   
    }catch(err){
       res.status(400).json({'error':err})
@@ -76,13 +89,10 @@ const findUserByEmail = async (req, res) =>{
     }
    };
 
-//loginUser
-//logoutUser
-
 
 const users = {
     loginUser,
-    logout,
+    logoutUser,
     createUser,
     findUserByEmail
 
