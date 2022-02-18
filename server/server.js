@@ -3,6 +3,7 @@ require('dotenv').config() // carga fichero variables de entorno
 const express = require('express')
 const logger = require('morgan');
 const helmet = require("helmet"); //Para seguridad
+const jwt = require('jsonwebtoken');
 
 /****************** Import Routes ******************/
 const userRoutes = require('./routes/users')
