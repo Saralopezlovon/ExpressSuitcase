@@ -19,39 +19,53 @@ const createUser = async (req, res) =>{
  }
 };
 
-//Aqui añadiriamos el login
-const loginUser = async (req, res) =>{
-   try{
 
-      const {email, password} = req.body;
-      const user = await Users.findOne({email: email});
+const loginUser = async (req, res) =>{ 
 
-      if (user){
-          const {email, password:pass, nickname, id_suitcase, id_user} = user
-          const validPass = await bcrypt.compare(password, pass);
-          if(validPass){
-              const payload = {check:true};
-              const token = jwt.sign(payload, process.env.SECRET, {expiresIn: '30m'}); 
+   const {email, password} = req.body;
+   let errors = [];
 
-              res.cookie('access_token', token, {
-               expires: new Date(Date.now() + 18000000),
-               secure: false, // set to true if your using https
-               httpOnly: true,
-               })
-               .status(200).json({
-                  mensaje: 'Valid Email and Password and correct authentication',
-                  token: token,
-                  email: email,
-                  nickname: nickname,
-                  id_suitcase: id_suitcase,
-                  id_user: id_user
-              })
+   try {
 
-          }else{
-              res.json("Wrong Pass!")
-          }
-      }else{
-          res.status(404).json("User not found");
+      if(!email || !password ) {
+         errors.push("Complete all fields")    
+      }
+
+      if(errors.length > 0 ) {
+         return res.status(403).json({ status: 'error', errors })
+
+      } else {
+         const user = await Users.findOne({email: email});
+
+         if (user){
+             const {email, password:pass, nickname, id_suitcase, id_user} = user
+             const validPass = await bcrypt.compare(password, pass);
+   
+             if(validPass){
+                 const payload = {check:true};
+                 const token = jwt.sign(payload, process.env.SECRET, {expiresIn: '30m'}); 
+   
+                 res.cookie('access_token', token, {
+                  expires: new Date(Date.now() + 18000000),
+                  secure: false, // set to true if your using https
+                  httpOnly: true,
+                  })
+                  .status(200).json({
+                     mensaje: 'Valid Email and Password and correct authentication',
+                     token: token,
+                     email: email,
+                     nickname: nickname,
+                     id_suitcase: id_suitcase,
+                     id_user: id_user
+                 })
+   
+             }else{
+                 res.json("Wrong Pass!")
+             }
+
+         }else{
+             res.status(404).json("User not found");
+         }
       }
 
    }catch(err){
@@ -59,7 +73,6 @@ const loginUser = async (req, res) =>{
    }
 };
 
-//Aqui añadiriamos el logout
 const logoutUser = async (req, res) =>{
    try{
       if (req.cookies['access_token']) {
