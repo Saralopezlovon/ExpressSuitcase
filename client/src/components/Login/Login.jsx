@@ -1,12 +1,12 @@
 import React from "react";
 
-import logoPrueba  from '../../assets/logoPrueba.jpg';
+import logo  from '../../assets/logo.jpg';
 
 import './Login.css';
 
 const Login = () => {
   return <div>
-    <img src={logoPrueba} alt="logoApp" className="logoApp" /> <br />
+    <img src={logo} alt="logoApp" className="logoApp" /> <br />
     <form className="formLogin" className="formLogin">
 
       <label for="userEmail"><b>Email</b></label><br />

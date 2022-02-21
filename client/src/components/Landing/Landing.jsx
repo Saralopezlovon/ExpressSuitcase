@@ -2,14 +2,14 @@ import React from "react";
 
 import Footer from '../Footer/Footer';
 
-import logoPrueba  from '../../assets/logoPrueba.jpg'
+import logo  from '../../assets/logo.jpg'
 import './Landing.css';
 
 
 const Landing = () => {
   return <div className="ladingContainer">
 
-    <img src={logoPrueba} alt="logoApp" className="logoApp" /> <br />
+    <img src={logo} alt="logoApp" className="logoApp" /> <br />
     <a href="/login"><button type="submit" className="btnAccess">Acceder</button></a>
     <Footer />
 
