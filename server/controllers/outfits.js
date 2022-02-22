@@ -30,10 +30,44 @@ const createOutfit = async (req, res) =>{
  }
 };
 
+const updateOutfit = async (req, res) =>{
+    try{
+       const {top, bottom, lingerie, shoes} = req.body
+       const {outfitId} = req.query   
+   
+       const outfit = await Outfits.findById(outfitId);
+        
+       outfit.top = top;
+       outfit.bottom = bottom;
+       outfit.lingerie = lingerie;
+       outfit.shoes = shoes;
+
+       await outfit.save()
+   
+       res.status(200).json(newOutfit)
+   
+    }catch(err){
+       res.status(400).json({'error':err})
+    }
+};
+
+const deleteAllOutfitsBySuitecase = async (req, res) =>{
+    try{
+       const {suitcaseId} = req.query   
+   
+       const outfits = await Outfits.deleteMany({ id_suitcase: suitcaseId });
+       res.status(200).json({msg: 'borrados', outfits})
+   
+    }catch(err){
+       res.status(400).json({'error':err})
+    }
+};
+
 
 const outfits = {
-    createOutfit
-
+    createOutfit,
+    updateOutfit,
+    deleteAllOutfitsBySuitecase
 }
 
 module.exports = outfits
