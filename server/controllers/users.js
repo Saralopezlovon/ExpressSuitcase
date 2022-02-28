@@ -3,17 +3,39 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 const createUser = async (req, res) =>{
+ let errors = [];  
+ const {email, password, nickname} = req.body;
+
  try{
-    const {email, password, nickname} = req.body;
-    const hash = await  bcrypt.hash(password,10);
-    const newUser = await Users.create({
-        email: email,
-        password: hash,
-        nickname: nickname   
-    });
+   if(!email || !password || !nickname) {
+      errors.push("Complete all fields")    
+   }
 
-    res.status(200).json(newUser)
+   if(!email.match(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)) {
+      errors.push("Email have incorrect format")    
+   }
 
+   if(errors.length > 0) {
+      res.status(500).json(errors)
+   } else {
+
+      const userExist = await Users.findOne({email})
+
+      if(userExist){
+         errors.push('User with this email Already exist')
+         res.status(500).json(errors)
+      }
+      else{
+         const hash = await  bcrypt.hash(password,10);
+         const newUser = await Users.create({
+             email: email,
+             password: hash,
+             nickname: nickname   
+         });
+      
+         res.status(200).json(newUser)
+      }
+   }
  }catch(err){
     res.status(400).json({'error':err})
  }
