@@ -29,6 +29,8 @@ app.use('/api', suitcaseRoutes);
 app.use('/api', outfitsRoutes);
 
 /****************** Actice Server ******************/
-app.listen(port, () => {
+const server = app.listen(port, () => {
     console.log(`ServerOn http://localhost:${port}`)
 })
+
+module.exports = server;
