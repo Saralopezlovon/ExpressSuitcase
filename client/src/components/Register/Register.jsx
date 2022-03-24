@@ -8,7 +8,7 @@ import './Register.css';
 const Register = () => {
   return <div>
   <img src={logo} alt="logoApp" className="logoApp" /> <br />
-  <form className="formLogin" className="formLogin">
+  <form className="formLogin" >
 
     <p className="paragrahRegister">Ingresa el email y contraseña que usarás para acceder a la app.</p>
 
