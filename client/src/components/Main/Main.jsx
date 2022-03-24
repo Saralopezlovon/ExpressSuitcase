@@ -5,6 +5,7 @@ import Landing from '../Landing/Landing';
 import Login from '../Login/Login';
 import Menu from '../Menu/Menu';
 import Register from '../Register/Register';
+import NewSuitcase from "../NewSuitcase/NewSuitcase";
 
 import './Main.css';
 
@@ -15,6 +16,7 @@ const Main = () => {
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Register />} />
       <Route path="/lobby" element={<Menu />} />
+      <Route path="/newsuitcase" element={<NewSuitcase />} />
     </Routes>
   </main>);
 };
