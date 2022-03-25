@@ -6,7 +6,7 @@ import { suitcaseContext } from './context/suitcaseContext';
 import Main from './components/Main/Main';
 
 import './App.scss';
-import './Normalize.css';
+
 
 function App(props) {
 
