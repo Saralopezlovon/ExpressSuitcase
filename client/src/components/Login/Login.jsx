@@ -7,7 +7,7 @@ import './Login.css';
 const Login = () => {
   return <div>
     <img src={logo} alt="logoApp" className="logoApp" /> <br />
-    <form className="formLogin" className="formLogin">
+    <form className="formLogin">
 
       <label for="userEmail"><b>Email</b></label><br />
       <input type="text" placeholder="usuario@gmail.com" name="userEmail" className="userEmail" required></input>
