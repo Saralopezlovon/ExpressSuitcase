@@ -7,7 +7,7 @@ import Menu from '../Menu/Menu';
 import Register from '../Register/Register';
 import NewSuitcase from "../NewSuitcase/NewSuitcase";
 
-import './Main.css';
+import '../../scss/components/_Main.scss'
 
 const Main = () => {
   return (<main>

@@ -1,12 +1,13 @@
 import React from "react";
 
-import logo  from '../../assets/logo.jpg'
-import './Register.css';
+import logo  from '../../assets/logo.jpg';
+
+import '../../scss/components/_Register.scss'
 
 //regex password: 1 en min, 1 en mayus, 1 number, un caracter raro, 8 letras minimo - 12 maximo 
 
 const Register = () => {
-  return <div>
+  return <div className="register">
   <img src={logo} alt="logoApp" className="logoApp" /> <br />
   <form className="formLogin" >
 
