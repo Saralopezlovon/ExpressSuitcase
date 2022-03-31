@@ -2,10 +2,10 @@ import React from "react";
 
 import logo  from '../../assets/logo.jpg';
 
-import './Login.css';
+import '../../scss/components/_Login.scss'
 
 const Login = () => {
-  return <div>
+  return <div className="login">
     <img src={logo} alt="logoApp" className="logoApp" /> <br />
     <form className="formLogin">
 

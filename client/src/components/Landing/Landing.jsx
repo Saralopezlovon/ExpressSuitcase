@@ -3,7 +3,8 @@ import React from "react";
 import Footer from '../Footer/Footer';
 
 import logo  from '../../assets/logo.jpg'
-import './Landing.css';
+
+import '../../scss/components/_Landing.scss'
 
 
 const Landing = () => {

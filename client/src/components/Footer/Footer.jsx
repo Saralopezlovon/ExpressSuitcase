@@ -1,6 +1,6 @@
 import React from "react";
 
-import './Footer.css';
+import '../../scss/components/_Footer.scss'
 
 const Footer = () => {
   return <footer>Hecho con ❤️ por Gustavo, Alejandra y Sara</footer>;

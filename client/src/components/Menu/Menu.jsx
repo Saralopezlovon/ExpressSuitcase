@@ -4,11 +4,12 @@ import Header from '../Header/Header';
 
 import weekend from '../../assets/img-weekend.jpg';
 import week from '../../assets/img-week.jpg';
-import './Menu.css';
+
+import '../../scss/components/_Menu.scss'
 
 
 const Menu = () => {
-  return <div>
+  return <div className="menu">
     <Header/>
     <div>
       <p><b>¿Cuánto dura tu viaje?</b></p>

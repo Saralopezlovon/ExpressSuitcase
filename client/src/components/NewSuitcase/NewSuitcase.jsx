@@ -1,10 +1,11 @@
 import React from "react";
 import Header from '../Header/Header';
 import suitcase  from '../../assets/suitcase.JPG';
-import './NewSuitcase.css';
+
+import '../../scss/components/_NewSuitcase.scss'
 
 const NewSuitcase = () => {
-  return <div>
+  return <div className="newSuitCase">
       <Header />
       <label for="nameSuitcase">Nombre de la maleta:</label> <br />
       <input type="text" id="nameSuitcase" name="nameSuitcase" required ></input><br />
