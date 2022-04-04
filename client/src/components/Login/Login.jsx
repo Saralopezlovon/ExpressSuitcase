@@ -6,7 +6,7 @@ import '../../scss/components/_Login.scss'
 
 const Login = () => {
   return <div className="login">
-    <img src={logo} alt="logoApp" className="logoApp" /> <br />
+    <h1  alt="logoApp" className="logoAppHeader">ExpressSuitcase!</h1>
     <form className="formLogin">
 
       <label for="userEmail"><b>Email</b></label><br />
@@ -20,10 +20,10 @@ const Login = () => {
       <br /><br />
 
       <button type="submit" className="btnLogin">Acceder</button>        
-
+      <p className="paragrahLogin">¿No tienes cuenta? <a href="/signup" className="linkRegister" ><b>Regístrate</b></a></p>
     </form>
 
-    <p className="paragrahLogin">¿No tienes cuenta? <a href="/signup" className="linkRegister" ><b>Regístrate</b></a></p>
+    
 
   </div>;
 };
