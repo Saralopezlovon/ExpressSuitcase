@@ -8,6 +8,9 @@ routes.post('/suitcase',validateToken, suitcases.createSuitcase);
 //http://localhost:4000/api/suitcase
 //http://localhost:4000/api/suitcase?suitcaseId=620be75f4ae50f1fc83d72f1
 //http://localhost:4000/api/suitcase?userEmail=carolina@gmail.com&type=weekend
+
 routes.get('/suitcase', validateToken, suitcases.findSuitcase);
+routes.put('/suitcase', validateToken, suitcases.updateSuitcase);
+routes.delete('/suitcase', validateToken, suitcases.deleteSuitcase);
 
 module.exports = routes;
