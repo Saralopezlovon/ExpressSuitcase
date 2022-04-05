@@ -1,0 +1,27 @@
+html, body{
+    font-family: var(--font-outfit);
+}
+
+.logoAppHeader {
+    font-family: var(--font-leckerli);
+    margin: 0;
+    padding-top: 30px;
+    color: white;
+    font-weight: 400;
+}
+
+div#root {
+    background-color: #172440;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+main {
+    display: block;
+    width: 100%;
+    height: 100%;
+}

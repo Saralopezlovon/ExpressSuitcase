@@ -3,6 +3,8 @@ require('dotenv').config() // carga fichero variables de entorno
 const express = require('express')
 const logger = require('morgan');
 const helmet = require("helmet"); //Para seguridad
+const jwt = require('jsonwebtoken');
+const cookieParser = require('cookie-parser');
 
 /****************** Import Routes ******************/
 const userRoutes = require('./routes/users')
@@ -19,6 +21,7 @@ app.use(express.json()); //Para habilitar envio de JSON al servidor
 app.use(express.urlencoded( { extended: false } )); //Habilita la lectura del body por metodo post
 app.use(logger('dev')) // habilitar Morgan con preset dev
 app.use(helmet());
+app.use(cookieParser()); //Permite trabajar con cookies
 
 /****************** Routes ******************/
 app.use('/api', userRoutes);
@@ -26,6 +29,8 @@ app.use('/api', suitcaseRoutes);
 app.use('/api', outfitsRoutes);
 
 /****************** Actice Server ******************/
-app.listen(port, () => {
+const server = app.listen(port, () => {
     console.log(`ServerOn http://localhost:${port}`)
 })
+
+module.exports = server;
