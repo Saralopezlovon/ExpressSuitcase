@@ -5,6 +5,8 @@ const logger = require('morgan');
 const helmet = require("helmet"); //Para seguridad
 const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
+const cors = require('cors')
+
 
 /****************** Import Routes ******************/
 const userRoutes = require('./routes/users')
@@ -22,6 +24,7 @@ app.use(express.urlencoded( { extended: false } )); //Habilita la lectura del bo
 app.use(logger('dev')) // habilitar Morgan con preset dev
 app.use(helmet());
 app.use(cookieParser()); //Permite trabajar con cookies
+app.use(cors()); //Politica cors
 
 /****************** Routes ******************/
 app.use('/api', userRoutes);

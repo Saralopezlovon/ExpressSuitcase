@@ -1,11 +1,28 @@
 import React from "react";
+import '../../scss/components/_Login.scss';
+import axios from 'axios';
 
-import '../../scss/components/_Login.scss'
+const Login = (props) => {
 
-const Login = () => {
+  //const [user, setUser] = useState('');
+  
+
+  const handleSubmit = async event =>{
+    event.preventDefault();
+
+    const log_user={
+      email: event.target.elements.userEmail.value,
+      password: event.target.elements.userPassword.value
+    }
+    console.log(log_user)
+    const logIn = await axios.post(`http://localhost:4000/api/user/login`, log_user)
+    console.log(logIn.data)
+    
+  };
+
   return <div className="login">
     <h1  alt="logoApp" className="logoAppHeader">ExpressSuitcase!</h1>
-    <form className="formLogin">
+    <form className="formLogin" onSubmit={handleSubmit}>
 
       <label for="userEmail"><b>Email</b></label><br />
       <input type="text" placeholder="usuario@gmail.com" name="userEmail" className="userEmail" required></input>
