@@ -17,6 +17,10 @@ button.btnAccess {
     font-weight: 500;
     font-size: 17px;
     top: 490px;
+
+    &:hover {
+    background-color: var(--color-whiteHover); 
+    }
 }
 
 .logoAppHeader {
@@ -25,4 +29,5 @@ button.btnAccess {
     padding-top: 80px;
     color: white;
     font-weight: 400;
+    
 }

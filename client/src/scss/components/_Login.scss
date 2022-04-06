@@ -43,6 +43,15 @@
     text-transform: uppercase;
     font-weight: 500;
     font-size: 17px;
+    width: 179px;
+    &:hover {
+        background-color:var(--color-orangeHover); 
+        }
+}
+
+.btnContainer{ 
+  display:flex;
+  justify-content: center;
 }
 
 .paragrahLogin {
@@ -53,6 +62,9 @@
 
 .linkRegister {
     color: var(--color-orange);
+    &:hover {
+        color:var(--color-orangeHover); 
+        }
 }
 
 
