@@ -21,11 +21,11 @@ const Register = () => {
 
     <br /><br />
 
-    <button type="submit" className="btnRegister">Regístrate</button>        
+    <div className="btnContainer"><button type="submit" className="btnRegister">Regístrate</button></div>        
 
   </form>
 
-</div>;;
+</div>;
 };
 
 export default Register;

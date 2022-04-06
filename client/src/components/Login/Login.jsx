@@ -1,7 +1,5 @@
 import React from "react";
 
-import logo  from '../../assets/logo.jpg';
-
 import '../../scss/components/_Login.scss'
 
 const Login = () => {
@@ -19,7 +17,7 @@ const Login = () => {
 
       <br /><br />
 
-      <button type="submit" className="btnLogin">Acceder</button>        
+      <div className="btnContainer"><button type="submit" className="btnLogin">Acceder</button></div>        
       <p className="paragrahLogin">¿No tienes cuenta? <a href="/signup" className="linkRegister" ><b>Regístrate</b></a></p>
     </form>
 
